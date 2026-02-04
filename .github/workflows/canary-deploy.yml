@@ -1,0 +1,21 @@
+name: Déploiement Canary
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  canary-deploy:
+    name: Déploiement Canary
+    runs-on: ubuntu-latest
+    if: vars.ENV_TARGET == 'canary'
+    steps:
+      - uses: ./.github/actions/setup-nodejs
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Déploiement Canary
+        run: echo "Hello Only Canary !"
