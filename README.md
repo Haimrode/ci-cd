@@ -11,3 +11,4 @@ TP d'integration continue
 - ✅ test unitaire
 - ✅ test integration
 - ✅ test e2e
+- ✅ test canary
