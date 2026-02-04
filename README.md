@@ -1,6 +1,8 @@
 # ci-cd
 TP d'integration continue 
 
+## Tests
+- test lint
 ## Workflow GitHub Actions - Jobs
 - ✅ Lint du code
 - ✅ Tests unitaires
