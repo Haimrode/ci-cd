@@ -1,4 +1,4 @@
-name: Tests d'Intégration
+name: Tests E2E
 
 on:
   push:
@@ -10,13 +10,14 @@ env:
   NODE_VERSION: '20'
 
 jobs:
-  integration-test:
-    name: Tests d'intégration
+  e2e-test:
+    name: Tests E2E
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     steps:
       - uses: ./.github/actions/setup-nodejs
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Tests d'intégration
-        run: echo "Hello Integration !"
+      - name: Tests E2E
+        run: echo "Hello E2E !"
