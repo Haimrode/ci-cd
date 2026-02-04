@@ -84,3 +84,24 @@ jobs:
 
       - name: Tests E2E
         run: echo "Hello E2E !"
+
+  canary-deploy:
+    name: Déploiement Canary
+    runs-on: ubuntu-latest
+    if: |
+      github.ref == 'refs/heads/main' &&
+      vars.ENV_TARGET == 'canary'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configuration Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Installation des dépendances
+        run: npm ci
+
+      - name: Déploiement Canary
+        run: echo "Hello Only Canary !"
