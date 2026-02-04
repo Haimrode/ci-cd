@@ -33,3 +33,9 @@ jobs:
     steps:
       - run: echo "Hello E2E !"
 
+  only-canary:
+    if: ${{ vars.ENV_TARGET == 'canary' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello Only Canary !"
+
