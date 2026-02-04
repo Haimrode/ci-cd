@@ -1,0 +1,22 @@
+name: Tests Unitaires
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  unit-test:
+    name: Tests unitaires
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/setup-nodejs
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Tests unitaires
+        run: npm test
