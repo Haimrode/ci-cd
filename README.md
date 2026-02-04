@@ -12,3 +12,4 @@ TP d'integration continue
 - ✅ test integration
 - ✅ test e2e
 - ✅ test canary
+- ✅ test release
