@@ -6,6 +6,7 @@ TP d'integration continue
 - test unitaire
 - test integration
 - test e2e
+- test canary
 - test e2e
 ## Workflow GitHub Actions - Jobs
 - ✅ Lint du code
