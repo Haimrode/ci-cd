@@ -1,4 +1,4 @@
-name: Lint
+name: Tests Unitaires
 
 on:
   push:
@@ -10,13 +10,13 @@ env:
   NODE_VERSION: '20'
 
 jobs:
-  lint:
-    name: Lint du code
+  unit-test:
+    name: Tests unitaires
     runs-on: ubuntu-latest
     steps:
       - uses: ./.github/actions/setup-nodejs
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Linting
-        run: npm run lint
+      - name: Tests unitaires
+        run: npm test
