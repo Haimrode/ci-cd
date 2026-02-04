@@ -27,3 +27,8 @@ jobs:
 
       - name: Run tests
         run: npm test
+  e2e-test:
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello E2E !"
