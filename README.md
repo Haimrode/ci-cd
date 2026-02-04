@@ -10,4 +10,5 @@ TP d'integration continue
 - ✅ setup-nodejs
 
 ## Tests
+- ✅ test lint
 - ✅ test release
