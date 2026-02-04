@@ -15,9 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
     steps:
-      - uses: ./.github/actions/setup-nodejs
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+      - run: npm ci
 
       - name: Tests E2E
         run: echo "Hello E2E !"
