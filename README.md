@@ -5,3 +5,6 @@ TP d'integration continue
 - ✅ package.json avec scripts
 - ✅ eslint configuration
 - ✅ Structure src/
+
+## Tests
+- ✅ test lint
