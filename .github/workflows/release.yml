@@ -1,33 +1,40 @@
-name: Release
+name: Auto Release on main
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      
+  - main
 
-env:
-  NODE_VERSION: '20'
+  permissions:
+    contents: write
 
 jobs:
   release:
-    name: Release
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      
+    name: Checkout
+      uses: actions/checkout@v4
 
-      - name: Configuration Git
-        run: |
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git config user.name "${{ github.actor }}"
+      
+    name: Generate version
+      id: version
+      run: |
+        VERSION="v$(date +'%Y.%m.%d')-${GITHUB_RUN_NUMBER}"
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: "npm"
-      - run: npm ci
+      
+    name: Create tag
+      run: |
+        git tag ${{ steps.version.outputs.version }}
+        git push origin ${{ steps.version.outputs.version }}
 
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx --yes release-it --ci
+      
+    name: Create GitHub release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ steps.version.outputs.version }}
+        name: Release ${{ steps.version.outputs.version }}
+        generate_release_notes: true
