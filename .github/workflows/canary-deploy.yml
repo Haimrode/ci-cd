@@ -11,7 +11,6 @@ jobs:
   canary-deploy:
     name: Déploiement Canary
     runs-on: ubuntu-latest
-    if: vars.ENV_TARGET == 'canary'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
