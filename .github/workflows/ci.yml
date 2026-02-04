@@ -1,23 +1,21 @@
-name: Tests E2E
+name: Déploiement Canary
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
 env:
   NODE_VERSION: '20'
 
 jobs:
-  e2e-test:
-    name: Tests E2E
+  canary-deploy:
+    name: Déploiement Canary
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
+    if: vars.ENV_TARGET == 'canary'
     steps:
       - uses: ./.github/actions/setup-nodejs
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Tests E2E
-        run: echo "Hello E2E !"
+      - name: Déploiement Canary
+        run: echo "Hello Only Canary !"
