@@ -4,6 +4,7 @@ TP d'integration continue
 ## Tests
 - test lint
 - test unitaire
+- test integration
 ## Workflow GitHub Actions - Jobs
 - ✅ Lint du code
 - ✅ Tests unitaires
