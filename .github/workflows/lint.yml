@@ -1,0 +1,22 @@
+name: Lint
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  lint:
+    name: Lint du code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/setup-nodejs
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Linting
+        run: npm run lint
