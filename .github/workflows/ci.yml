@@ -5,10 +5,13 @@ on:
     branches: [ "main" ]
   pull_request:
 
-jobs:
-  ci:
-    runs-on: ubuntu-latest
+env:
+  NODE_VERSION: '20'
 
+jobs:
+  lint:
+    name: Lint du code
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -16,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - name: Install dependencies
@@ -25,21 +28,8 @@ jobs:
       - name: Lint code
         run: npm run lint
 
-      - name: Run tests
-        run: npm test
-  e2e-test:
-    if: ${{ github.event_name == 'pull_request' }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Hello E2E !"
-
-  only-canary:
-    if: ${{ vars.ENV_TARGET == 'canary' }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Hello Only Canary !"
-
   unit-test:
+    name: Tests unitaires
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -48,7 +38,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - name: Install dependencies
@@ -56,10 +46,3 @@ jobs:
 
       - name: Run unit tests
         run: npm test
-
-  integration-test:
-    needs: [unit-test, e2e-test]
-    if: ${{ github.event_name == 'pull_request' }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Hello Integration !"
