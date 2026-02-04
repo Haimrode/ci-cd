@@ -8,3 +8,4 @@ TP d'integration continue
 
 ## Tests
 - ✅ test lint
+- ✅ test unitaire
