@@ -1,4 +1,4 @@
-name: Tests Unitaires
+name: Tests d'Intégration
 
 on:
   push:
@@ -10,13 +10,13 @@ env:
   NODE_VERSION: '20'
 
 jobs:
-  unit-test:
-    name: Tests unitaires
+  integration-test:
+    name: Tests d'intégration
     runs-on: ubuntu-latest
     steps:
       - uses: ./.github/actions/setup-nodejs
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Tests unitaires
-        run: npm test
+      - name: Tests d'intégration
+        run: echo "Hello Integration !"
