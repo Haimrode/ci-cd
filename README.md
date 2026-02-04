@@ -8,5 +8,8 @@ TP d'integration continue
 - ✅ Tests E2E
 - ✅ Déploiement Canary
 - ✅ Release
+
+## Actions réutilisables
+- ✅ `.github/actions/setup-nodejs` - Configuration Node.js et installation des dépendances
 ## Workflow GitHub Actions
 - ✅ Lint du code
