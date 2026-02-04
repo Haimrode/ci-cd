@@ -1,0 +1,24 @@
+name: 'Configuration Node.js et dépendances'
+description: 'Configure Node.js et installe les dépendances npm'
+
+inputs:
+  node-version:
+    description: 'Version de Node.js'
+    required: false
+    default: '20'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Configuration Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'npm'
+
+    - name: Installation des dépendances
+      run: npm ci
+      shell: bash
