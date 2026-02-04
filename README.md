@@ -6,5 +6,8 @@ TP d'integration continue
 - ✅ eslint configuration
 - ✅ Structure src/
 
+## Actions réutilisables
+- ✅ setup-nodejs
+
 ## Tests
 - ✅ test release
