@@ -7,5 +7,6 @@ TP d'integration continue
 - ✅ Tests d'intégration
 - ✅ Tests E2E
 - ✅ Déploiement Canary
+- ✅ Release
 ## Workflow GitHub Actions
 - ✅ Lint du code
