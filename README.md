@@ -5,5 +5,6 @@ TP d'integration continue
 - ✅ Lint du code
 - ✅ Tests unitaires
 - ✅ Tests d'intégration
+- ✅ Tests E2E
 ## Workflow GitHub Actions
 - ✅ Lint du code
